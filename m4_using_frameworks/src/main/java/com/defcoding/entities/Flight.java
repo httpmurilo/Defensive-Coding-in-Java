@@ -1,6 +1,7 @@
 package com.defcoding.entities;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class Flight {
 
@@ -8,15 +9,22 @@ public class Flight {
     private String toDest;
     private LocalDate date;
     private int seatsAvailable;
+    private PlaneModel model;
 
     public Flight(String fromDest,
                   String toDest,
                   LocalDate date,
-                  int seatsAvailable){
+                  int seatsAvailable,
+                  PlaneModel model){
         this.fromDest = fromDest;
         this.toDest = toDest;
         this.date = date;
         this.seatsAvailable = seatsAvailable;
+
+        this.model = Optional.ofNullable(model).orElse(PlaneModel.BOEING737_700);
+
+        //OR TERNARY
+        this.model = model != null ? model : PlaneModel.BOEING737_800;
     }
 
     public String getFromDest() {

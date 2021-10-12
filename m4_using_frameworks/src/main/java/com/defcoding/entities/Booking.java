@@ -1,5 +1,7 @@
 package com.defcoding.entities;
 
+import com.google.common.base.Preconditions;
+
 import java.util.List;
 
 import static java.util.Objects.requireNonNull;
@@ -15,6 +17,7 @@ public class Booking {
         this.referenceId = isInvalidString(referenceId);
         this.passengerList = validateList(passengers);
         this.flight = requireNonNull(flight, "A booking cannot be created with a Flight null reference");
+        //this.flight = Preconditions.checkNotNull(flight, "Flight cannot be null");
     }
 
 

@@ -1,5 +1,7 @@
 package com.defcoding;
 
+import org.apache.commons.lang3.Validate;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -31,9 +33,12 @@ public class FlightSearchService {
                     "You input " + fromDest);
         }
 
+        /*
         if(passengerNum < 1 || passengerNum > 7){
             throw new IllegalArgumentException("The number of passengers must be between 1 and 7");
-        }
+        }*/
+
+        Validate.inclusiveBetween(1,7, passengerNum);
 
         LocalDate date = parseInputDate(departDate);
         List<Flight> flights = flightStore.getFlights();
